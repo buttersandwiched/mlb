@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="23d07e0c-9ce1-41b4-adc3-3d65ff089e3b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/mlb.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/get_game_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/get_mlb_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/get_mlb_game_schedule.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/shared/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/shared/api_tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/shared/cloud_tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/shared/data_dictionaries.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/shared/db_tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/audit/game.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/baseball_bronze.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/game.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/hit.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/pitch.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/play.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/player.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/runner.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/team.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/CTEs.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/full_refresh.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/game.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/hit.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/pitch.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/play.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/player.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/plays.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/readMe.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/schedule.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/team.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/ddl/pitch_type.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/ddl/play_call.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/ddl/player.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/ddl/team.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/transformations/pitch_type.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/transformations/play_call.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/transformations/player.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/transformations/scratch.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/dims/transformations/v_pitchers.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/game.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/pitch.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/play.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/plays.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/game.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/play.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/player.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/plays.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/schedule.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/teams.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/game.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/play.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/player.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/plays.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/schedule.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/scratch.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/teams.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/raw/ddl/baseball_raw_ddl.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/raw/ddl/game.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/raw/ddl/play.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/raw/ddl/player.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/raw/ddl/schedule.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/raw/ddl/team.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/raw/transformations/audit.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="SQL File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2vQOvgCO343WqwOhxFRGwGHxp9i" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Database Script.plays.sql.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Shell Script.Cron Command.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andrewrittle/repos/mlb&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PostgreSQL&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/middleware" />
+      <recent name="$PROJECT_DIR$/db/middleware" />
+      <recent name="$PROJECT_DIR$/db/schemas/stage/ddl" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/db" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/middleware" />
+      <recent name="$PROJECT_DIR$/db/schemas/aluminum/ddl" />
+      <recent name="$PROJECT_DIR$/db/schemas/models/dims" />
+      <recent name="$PROJECT_DIR$/middleware/shared" />
+      <recent name="$PROJECT_DIR$/.venv" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Database Script.CTEs.sql">
+    <configuration name="CTEs.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/schemas/aluminum/transformations/CTEs.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
+    <configuration name="baseball_history.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/baseball_history.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
+    <configuration name="liveGameFeed.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/schemas/raw/ddl/liveGameFeed.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
+    <configuration name="plays.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/schemas/stage/transformations/plays.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="90bc1f1a-6552-486f-9cf4-eec0af84597a" namespace="database/&quot;sports_analytics&quot;/schema/&quot;baseball_raw&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/schemas/raw/transformations/scratch.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="90bc1f1a-6552-486f-9cf4-eec0af84597a" namespace="database/&quot;sports_analytics&quot;/schema/&quot;baseball_raw&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Database Script.CTEs.sql" />
+        <item itemvalue="Database Script.liveGameFeed.sql" />
+        <item itemvalue="Database Script.scratch.sql" />
+        <item itemvalue="Database Script.plays.sql" />
+        <item itemvalue="Database Script.baseball_history.sql" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-PY-251.23774.444" />
+        <option value="bundled-python-sdk-890ed5b35930-d9c5bdb153f4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.444" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23d07e0c-9ce1-41b4-adc3-3d65ff089e3b" name="Changes" comment="" />
+      <created>1744074064334</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744074064334</updated>
+      <workItem from="1744074065397" duration="310000" />
+      <workItem from="1744074641195" duration="124045000" />
+      <workItem from="1744888064234" duration="2268000" />
+      <workItem from="1744895782799" duration="199000" />
+      <workItem from="1744896008187" duration="13448000" />
+      <workItem from="1744915906800" duration="4300000" />
+      <workItem from="1744920815879" duration="24631000" />
+      <workItem from="1745057366494" duration="93465000" />
+      <workItem from="1745437781693" duration="233000" />
+      <workItem from="1745438019644" duration="24807000" />
+      <workItem from="1745554167928" duration="1358000" />
+      <workItem from="1745594106362" duration="51407000" />
+      <workItem from="1746133046763" duration="28604000" />
+      <workItem from="1746293127727" duration="33479000" />
+      <workItem from="1746627682401" duration="8477000" />
+      <workItem from="1746701335700" duration="48000" />
+      <workItem from="1746701392232" duration="4379000" />
+      <workItem from="1747666137054" duration="6435000" />
+      <workItem from="1748011591931" duration="23164000" />
+      <workItem from="1748109408461" duration="86821000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

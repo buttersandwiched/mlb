@@ -1,0 +1,65 @@
+TRUNCATE TABLE baseball_aluminum.pitch;
+
+WITH pitchData AS
+    (
+        SELECT
+            p."gamePk",
+            p."pitcherId",
+            p."batterId",
+            p."atBatId",
+            p."batterPitchNumber",
+            p."pitchTypeCode",
+            p."pitchTypeDescription",
+            p."isStrike",
+            p."isBall",
+            p."countBalls",
+            p."countStrikes",
+            p."countOuts",
+            (p."pitchData"->>'startSpeed')::NUMERIC                         AS "pitchStartSpeed",
+            (p."pitchData"->>'endSpeed')::NUMERIC                           AS "pitchEndSpeed",
+            (p."pitchData"->>'strikeZoneTop')::NUMERIC                      AS "strikeZoneTop",
+            (p."pitchData"->>'strikeZoneBottom')::NUMERIC                   AS "strikeZoneBottom",
+            (p."pitchData"->'coordinates')::JSON                            AS "strikeZoneCoordinates",
+            (p."pitchData"->'breaks'->>'breakAngle')::NUMERIC               AS "breakAngle",
+            (p."pitchData"->'breaks'->>'breakLength')::NUMERIC              AS "breakLength",
+            (p."pitchData"->'breaks'->>'breakY')::NUMERIC                   AS "breakY",
+            (p."pitchData"->'breaks'->>'breakVertical')::NUMERIC            AS "breakVertical",
+            (p."pitchData"->'breaks'->>'breakVerticalInduced')::NUMERIC     AS "breakVerticalInduced",
+            (p."pitchData"->'breaks'->>'breakHorizontal')::NUMERIC          AS "breakHorizontal",
+            (p."pitchData"->'breaks'->>'spinRate')::INT                     AS "spinRate",
+            (p."pitchData"->'breaks'->>'spinDirection')::INT                AS "spinDirection",
+            (p."pitchData"->>'zone')::INT                                   AS zone,
+            (p."pitchData"->>'typeConfidence')::NUMERIC                     AS "typeConfidence",
+            (p."pitchData"->>'plateTime')::NUMERIC                          AS "plateTime",
+            (p."pitchData"->>'extension')::NUMERIC                          AS extension
+        FROM baseball_aluminum.play p
+        WHERE p."isPitch"
+    )
+INSERT INTO baseball_aluminum.pitch ("gamePk", "pitcherId", "batterId", "atBatId", "pitchNumber", "pitchTypeCode", "pitchTypeDescription", "pitchStartSpeed", "pitchEndSpeed", "strikeZoneTop", "strikeZoneBottom", "strikeZoneCoordinates", "breakAngle", "breakLength", "breakY", "breakVertical", "breakVerticalInduced", "breakHorizontal", "spinRate", "spinDirection", zone, "typeConfidence", "plateTime", extension, "_dateCreated", "_createdBy")
+    SELECT "gamePk",
+           "pitcherId",
+           "batterId",
+           "atBatId",
+           "batterPitchNumber",
+           "pitchTypeCode",
+           "pitchTypeDescription",
+           "pitchStartSpeed",
+           "pitchEndSpeed",
+           "strikeZoneTop",
+           "strikeZoneBottom",
+           "strikeZoneCoordinates",
+           "breakAngle",
+           "breakLength",
+           "breakY",
+           "breakVertical",
+           "breakVerticalInduced",
+           "breakHorizontal",
+           "spinRate",
+           "spinDirection",
+           "zone",
+           "typeConfidence",
+           "plateTime",
+           "extension",
+           CURRENT_TIMESTAMP,
+           'manual'
+    FROM pitchData;
