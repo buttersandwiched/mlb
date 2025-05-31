@@ -20,7 +20,6 @@ print('done.')
 #cloud_tools.write_to_blob('mlb', 'teams/teams.json', json.dumps(teams, indent=4))
 '''
 
-#TODO: this function is slow -- can we improve performance??
 print ('fetching mlb player data...')
 players = api_tools.get_mlb_players(verbose=True, start_date=(datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d'))
 print ('done.')

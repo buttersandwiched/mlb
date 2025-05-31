@@ -11,7 +11,7 @@ CREATE TABLE baseball_platinum.game
     "firstPitchDateTime"    timestamp,
     "weatherCondition"      TEXT,
     "temperature"           TEXT,
-    "WindSpeedDirection"    Text,
+    "windSpeedDirection"    Text,
     "gameAttendance"        INT,
     "gameDurationMinutes"   INT,
     "_createdAt"            timestamp,

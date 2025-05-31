@@ -1,59 +1,38 @@
 CREATE VIEW baseball_models.play    AS
 SELECT home."team_name"             AS "homeTeam",
        away.team_name               AS "awayTeam",
-       pb.full_name                 as batter,
-       pp.full_name                 as pitcher,
+       pb.full_name                 AS batter,
+       pp.full_name                 AS pitcher,
        p."playPk",
        p."gamePk",
        p."atBatId",
        p."pitcherId",
        p."batterId",
-       CASE
-            WHEN (json_array_element(p."runnerData",0)->'movement')->>'originBase' = '1B'
-            THEN  (json_array_element(p."runnerData",0)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",1)->'movement')->>'originBase' = '1B'
-            THEN  (json_array_element(p."runnerData",1)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",2)->'movement')->>'originBase' = '1B'
-            THEN  (json_array_element(p."runnerData",2)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",3)->'movement')->>'originBase' = '1B'
-            THEN  (json_array_element(p."runnerData",3)->'details')->'runner'->>'id'
-        END AS "runnerOnFirstID",
-        CASE
-            WHEN (json_array_element(p."runnerData",0)->'movement')->>'originBase' = '2B'
-            THEN  (json_array_element(p."runnerData",0)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",1)->'movement')->>'originBase' = '2B'
-            THEN  (json_array_element(p."runnerData",1)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",2)->'movement')->>'originBase' = '2B'
-            THEN  (json_array_element(p."runnerData",2)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",3)->'movement')->>'originBase' = '2B'
-            THEN  (json_array_element(p."runnerData",3)->'details')->'runner'->>'id'
-        end AS "runnerOnSecondID",
-        CASE
-            WHEN (json_array_element(p."runnerData",0)->'movement')->>'originBase' = '3B'
-            THEN  (json_array_element(p."runnerData",0)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",1)->'movement')->>'originBase' = '3B'
-            THEN  (json_array_element(p."runnerData",1)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",2)->'movement')->>'originBase' = '3B'
-            THEN  (json_array_element(p."runnerData",2)->'details')->'runner'->>'id'
-            WHEN (json_array_element(p."runnerData",3)->'movement')->>'originBase' = '3B'
-            THEN  (json_array_element(p."runnerData",3)->'details')->'runner'->>'id'
-        END AS "runnerOnThirdID",
+       p."postOnFirstId"            AS "runnerOnFirstId",
+       p."postOnSecondId"           AS "runnerOnSecondId",
+       p."postOnThirdId"            AS "runnerOnThirdId",
        p.inning,
        p."halfInning",
        p."playCode",
-       case when p."playCode" in ('D', 'X', 'E') or "countStrikes" = 3 or "countBalls" = 4
-           then p."playDescription" || ': ' || p."resultEventDescription"
+       CASE WHEN p."playCode" IN ('D', 'X', 'E') OR "countStrikes" = 3 OR "countBalls" = 4
+           THEN p."playDescription" || ': ' || p."resultEventDescription"
            ELSE p."playDescription" END,
        p."pitchTypeCode",
        p."pitchTypeDescription",
        p."playStartTime",
        p."playEndTime",
-       p."batterPlayIndex" as "batterPlayCount",
+       p."batterPlayIndex"          as "batterPlayCount",
        p."batterPitchNumber",
        p."countBalls",
        p."countStrikes",
        p."countOuts",
-      p."runnerData"
+       p."runnerData",
+       p."isPitch",
+       p."isInPlay",
+       p."isBatterOut",
+       p."playStartTime",
+       p."playEndTime",
+       p."RBIs"
 FROM baseball_platinum.play p
     INNER JOIN baseball_platinum.game g on p."gamePk" = g."gamePk"
     INNER JOIN baseball_platinum.teams away on away.team_id = g."awayTeamId"

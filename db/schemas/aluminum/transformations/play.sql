@@ -16,6 +16,9 @@ WITH game AS
             ("atBat".value->'about'->>'atBatIndex')::INT              AS "atBatId",
             ("atBat".value->'matchup'->'batter'->>'id')::INT          AS "batterId",
             ("atBat".value->'matchup'->'pitcher'->>'id')::INT         AS "pitcherId",
+            ("atBat".value->'matchup'->'postOnFirst'->>'id')::INT     AS "postOnFirstId",
+            ("atBat".value->'matchup'->'postOnSecond'->>'id')::INT    AS "postOnSecondId",
+            ("atBat".value->'matchup'->'postOnThird'->>'id')::INT     AS "postOnThirdId",
             ("atBat".value->'about'->>'inning')::INT                  AS "inning",
             "atBat".value->'about'->> 'halfInning'                    AS "halfInning",
             ("atBat".value->'about'->>'startTime')::timestamptz       AS "atBatStartTime",
@@ -54,6 +57,9 @@ WITH game AS
             ab."atBatId",
             ab."batterId",
             ab."pitcherId",
+            ab."postOnFirstId",
+            ab."postOnSecondId",
+            ab."postOnThirdId",
             ab."inning",
             ab."halfInning",
             ab."atBatStartTime",
@@ -106,7 +112,7 @@ WITH game AS
 )
 
 INSERT INTO baseball_aluminum.play
-    ("gamePk", "playId", "atBatId", "pitcherId", "batterId", "batterPlayIndex", "batterPitchNumber", "captivatingIndex", inning,
+    ("gamePk", "playId", "atBatId", "pitcherId", "batterId", "postOnFirstId", "postOnSecondId", "postOnThirdId", "batterPlayIndex", "batterPitchNumber", "captivatingIndex", inning,
      "halfInning","resultType", "resultEvent", "resultEventType", "resultEventDescription", "playCallCode",
      "playCallDescription","playCode", "playDescription", "pitchTypeCode", "pitchTypeDescription", "pitcherSplits",
      "pitcherHotColdZones", "pitchData", "batterSplits", "batterHotColdZones", "HitData", "runnerData",
@@ -119,6 +125,9 @@ SELECT
     p."atBatId",
     p."pitcherId",
     p."batterId",
+    p."postOnFirstId",
+    p."postOnSecondId",
+    p."postOnThirdId",
     p."playIndex",
     p."pitchNumber",
     p."captivatingIndex",
