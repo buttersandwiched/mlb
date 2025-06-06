@@ -13,14 +13,14 @@ WHEN MATCHED THEN
                "firstPitchDateTime"     = source."firstPitch",
                "weatherCondition"       = source."weatherCondition",
                "temperature"            = source."weatherTemp",
-               "WindSpeedDirection"     = source."weatherWind",
+               "windSpeedDirection"     = source."weatherWind",
                "gameAttendance"         = source."gameAttendance",
                "gameDurationMinutes"    = source."gameDurationMinutes",
                "_updatedAt"             = CURRENT_TIMESTAMP,
                "_updatedBy"             = 'db_user'
 WHEN NOT MATCHED THEN
 INSERT ("gamePk", "awayTeamId","homeTeamId", "venueId", "gameDate", "originalGameDate", "officialGameDate", "officialGameTime", "firstPitchDateTime", "weatherCondition", "temperature",
-        "WindSpeedDirection", "gameAttendance", "gameDurationMinutes", "_createdAt", "_createdBy", "_updatedAt", "_updatedBy")
+        "windSpeedDirection", "gameAttendance", "gameDurationMinutes", "_createdAt", "_createdBy", "_updatedAt", "_updatedBy")
 VALUES (
         "gamePk",
         "awayTeamId",

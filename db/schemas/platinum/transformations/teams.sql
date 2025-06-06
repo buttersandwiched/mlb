@@ -1,41 +1,38 @@
-MERGE INTO baseball_platinum.teams target
-USING baseball_aluminum.teams source
-ON source.teams_id = target.team_id
+MERGE INTO baseball_platinum.team target
+USING baseball_aluminum.team source
+ON source."teamId" = target."teamId"
 WHEN MATCHED THEN UPDATE 
-    SET team_name           = source.team_name,
-        venue_id            = source.venue_id,
-        venue_name          = source.venue_name,
-        spring_league_id    = source.spring_league_id,
-        spring_league_name  = source.spring_league_name,
-        league_id           = source.league_id,
-        league_name         = source.league_name,
-        division_id         = source.division_id,
-        division_name       = source.division_name,
-        sport_id            = source.sport_id,
-        sport_name          = source.sport_name
+    SET "teamName"          = source."teamName",
+        "venueId"           = source."venueId",
+        "venueName"         = source."venueName",
+        "springLeagueId"    = source."springLeagueId",
+        "springLeagueName"  = source."springLeagueName",
+        "leagueId"          = source."leagueId",
+        "leagueName"        = source."leagueName",
+        "divisionId"        = source."divisionId",
+        "divisionName"      = source."divisionName",
+        "sportId"           = source."sportId"
 WHEN NOT MATCHED THEN
-    INSERT (team_id,
-            team_name,
-            venue_id,
-            venue_name,
-            spring_league_id,
-            spring_league_name,
-            league_id,
-            league_name,
-            division_id,
-            division_name,
-            sport_id,
-            sport_name)
-    VALUES (source.teams_id,
-            source.team_name,
-            source.venue_id,
-            source.venue_name,
-            source.spring_league_id,
-            source.spring_league_name,
-            source.league_id,
-            source.league_name,
-            source.division_id,
-            source.division_name,
-            source.sport_id,
-            source.sport_name);
-
+    INSERT ("teamId",
+            "teamName",
+            "venueId",
+            "venueName",
+            "springLeagueId",
+            "springLeagueName",
+            "leagueId",
+            "leagueName",
+            "divisionId",
+            "divisionName",
+            "sportId")
+    VALUES (source."teamId",
+            source."teamName",
+            source."venueId",
+            source."venueName",
+            source."springLeagueId",
+            source."springLeagueName",
+            source."leagueId",
+            source."leagueName",
+            source."divisionId",
+            source."divisionName",
+            source."sportId"
+           )

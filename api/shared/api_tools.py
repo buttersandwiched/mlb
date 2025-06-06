@@ -130,8 +130,6 @@ def get_mlb_at_bats(start_date=None,
     # initialize lists
     game_ids = []
     game_plays = []
-    number_of_games = len(schedule)
-    print(f'number of games: {number_of_games}')
 
     #get all game ids so we can properly query the api
     for date, value in enumerate(schedule):
@@ -143,6 +141,7 @@ def get_mlb_at_bats(start_date=None,
                 game_ids.append(game_id['gamePk'])
 
     if game_ids:
+        print(f'fetching at bats for {len(game_ids)} games')
         for game_id in game_ids:
             endpoint = f'/game/{game_id}/feed/live'
             resp = get_mlb_stats_api_response(endpoint=endpoint,
@@ -176,7 +175,7 @@ def get_mlb_at_bats(start_date=None,
 def get_mlb_players(season=datetime.now().year,
                     start_date=(datetime.now().date() - timedelta(days=7)).strftime('%Y-%m-%d'),
                     end_date=datetime.now().date().strftime('%Y-%m-%d'),
-                    verbose=False):
+                    verbose=True):
 
     # get list of scheduled games data to parse the active players in each
     if season and not start_date and not end_date:
@@ -211,7 +210,7 @@ def get_mlb_players(season=datetime.now().year,
                         player_dict = {'link': player['person']['link'], 'teamId': player['parentTeamId']}
                     resp = get_mlb_stats_api_response(player['person']['link'],
                                                       is_full_endpoint=True,
-                                                      verbose=False)
+                                                      verbose=True)
                     if resp.status_code == 200:
                         player_dict.update(resp.json()['people'][0])
 

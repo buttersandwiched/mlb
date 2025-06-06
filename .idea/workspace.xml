@@ -4,16 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23d07e0c-9ce1-41b4-adc3-3d65ff089e3b" name="Changes" comment="refactor column names">
+    <list default="true" id="23d07e0c-9ce1-41b4-adc3-3d65ff089e3b" name="Changes" comment="remove unnecessary files">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/audit/play.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/runner.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/appearance.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/batterFaced.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/batterSeasonStats.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/boxScore.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/plateAppearance.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/runner.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/runner.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/get_game_data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/get_mlb_game_schedule.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/shared/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/shared/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/plays.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/ddl/plays.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/ddl/teams.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/plays.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/raw/ddl/baseball_raw_ddl.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/get_mlb_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/get_mlb_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/shared/api_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/shared/api_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/ddl/runner.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/runner.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/transformations/hit.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/hit.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/transformations/plays.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/game.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/models/facts/game.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/pitch.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/models/facts/pitch.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/play.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/game.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/game.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/play.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/play.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/player.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/player.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/teams.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/teams.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,18 +45,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "buttersandwiched"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;buttersandwiched&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/buttersandwiched/mlb.git",
-    "accountId": "765f545b-5674-4430-af70-abff0e12e5d4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/buttersandwiched/mlb.git&quot;,
+    &quot;accountId&quot;: &quot;765f545b-5674-4430-af70-abff0e12e5d4&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -54,33 +68,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Database Script.plays.sql.executor": "Run",
-    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Shell Script.Cron Command.executor": "Run",
-    "database.data.extractors.current.export.id": "JSON-Groovy.json.groovy",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/andrewrittle/repos/mlb",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Database Script.plays.sql.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Shell Script.Cron Command.executor&quot;: &quot;Run&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;JSON-Groovy.json.groovy&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andrewrittle/repos/mlb&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PostgreSQL"
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PostgreSQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/middleware" />
@@ -90,11 +104,11 @@
       <recent name="$PROJECT_DIR$/db" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/middleware" />
       <recent name="$PROJECT_DIR$/db/schemas/aluminum/ddl" />
       <recent name="$PROJECT_DIR$/db/schemas/models/dims" />
       <recent name="$PROJECT_DIR$/middleware/shared" />
-      <recent name="$PROJECT_DIR$/.venv" />
     </key>
   </component>
   <component name="RunManager" selected="Database Script.CTEs.sql">
@@ -170,7 +184,8 @@
       <workItem from="1746701392232" duration="4379000" />
       <workItem from="1747666137054" duration="6435000" />
       <workItem from="1748011591931" duration="23164000" />
-      <workItem from="1748109408461" duration="97588000" />
+      <workItem from="1748109408461" duration="100399000" />
+      <workItem from="1748744000895" duration="66458000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -188,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748715090057</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="remove unnecessary files">
+      <option name="closed" value="true" />
+      <created>1748715193319</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748715193319</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +231,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="refactor column names" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor column names" />
+    <MESSAGE value="remove unnecessary files" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove unnecessary files" />
   </component>
 </project>

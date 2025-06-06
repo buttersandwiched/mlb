@@ -28,4 +28,4 @@ SELECT
 
 
 SELECT *
-FROM baseball_aluminum.pitch
+FROM baseball_aluminum.hit

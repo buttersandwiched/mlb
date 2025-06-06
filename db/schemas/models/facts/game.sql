@@ -9,7 +9,7 @@ SELECT
     s.game_in_series                                              AS "gameInSeries",
     s.game_number                                                 AS "gameNumber",
     s.game_type                                                   AS "gameType",
-    CAST("officialGameDate" as DATE) || ' ' || "officialGameTime" as "officialGameTime",
+    CAST("officialGameDate" as DATE) || ' ' || "officialGameTime" AS "officialGameTime",
     "firstPitchDateTime",
     g."originalGameDate",
     s.season,
@@ -20,7 +20,4 @@ SELECT
 FROM baseball_platinum.game g
 INNER JOIN baseball_platinum.teams t on g."homeTeamId" = t.team_id
 INNER JOIN baseball_platinum.teams t2 on t2.team_id = g."awayTeamId"
-INNER JOIN baseball_platinum.schedule s on g."gamePk" = s.game_id
-
-SELECT *
-from baseball_models.game
+INNER JOIN baseball_platinum.schedule s on g."gamePk" = s.game_id;

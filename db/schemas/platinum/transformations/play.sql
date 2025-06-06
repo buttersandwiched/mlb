@@ -116,3 +116,4 @@ VALUES (
 
 SELECT *
 FROM baseball_platinum.play
+order by "gamePk" desc

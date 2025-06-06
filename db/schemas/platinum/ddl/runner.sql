@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS baseball_aluminum.runner;
-CREATE TABLE baseball_aluminum.runner
+DROP TABLE IF EXISTS baseball_platinum.runner;
+CREATE TABLE baseball_platinum.runner
 (
+    "runPk"                 SERIAL PRIMARY KEY,
     "gamePk"                INT,
     "runnerId"              INT,
     "pitcherId"             INT,
@@ -22,5 +23,6 @@ CREATE TABLE baseball_aluminum.runner
     "isRBI"                 BOOLEAN,
     "isEarnedRun"           BOOLEAN,
     "isUnearnedRun"         BOOLEAN,
-    "_createdAt"            TIMESTAMP
+    "_createdAt"            TIMESTAMP,
+    "_updatedAt"            TIMESTAMP
     )
