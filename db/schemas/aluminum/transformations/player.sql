@@ -92,7 +92,4 @@ INSERT INTO baseball_aluminum.player ("playerId",
 
 select *
 from baseball_aluminum.player;
-select id, count(*)
-from baseball_raw.player
-group by 1
-having count(*) > 1;
+

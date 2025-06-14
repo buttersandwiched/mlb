@@ -1,9 +1,35 @@
+
 MERGE INTO baseball_platinum.runner  target
-USING baseball_aluminum.runner as source
+USING (SELECT DISTINCT "gamePk",
+                       "runnerId",
+                       "pitcherId",
+                       "responsiblePitcherId",
+                       "postOnFirstId",
+                       "postOnSecondId",
+                       "postOnThirdId",
+                       "atBatId",
+                       "batterPlayId",
+                       "eventType",
+                       "originBase",
+                       "startBase",
+                       "endBase",
+                       "outBase",
+                       "outNumber",
+                       "isStolenBase",
+                       "isCaughtStealing",
+                       "isOut",
+                       "isRBI",
+                       "isEarnedRun",
+                       "isUnearnedRun",
+                       "_createdAt"
+        FROM baseball_aluminum.runner
+       )as source
 ON source."runnerId" = target."runnerId"
     and source."gamePk" = target."gamePk"
     and source."atBatId" = target."atBatId"
     and source."batterPlayId" = target."batterPlayId"
+    and source."pitcherId" = target."pitcherId"
+    and source."responsiblePitcherId" = target."responsiblePitcherId"
 WHEN MATCHED THEN
     UPDATE SET
                "eventType"              = source."eventType",
@@ -68,3 +94,17 @@ VALUES (
         current_timestamp,
         current_timestamp
        );
+
+
+SELECT "gamePk",
+       COALESCE("responsiblePitcherId", "pitcherId") as "resposiblePitcherId",
+       "batterPlayId",
+       "atBatId",
+       sum(case when "isEarnedRun" then 1 else 0 end) as "earnedRuns",
+       sum(case when "isUnearnedRun" then 1 else 0 end) as "unearnedRuns",
+       sum(case when "isRBI" then 1 else 0 end) as         "RBIsSurrendered",
+       sum(case when "isStolenBase" then 1 else 0 end) as "stolenBasesAllowed",
+       sum(case when "isCaughtStealing" then 1 else 0 end) as "caughtStealing"
+FROM baseball_platinum.runner
+group by "gamePk", "batterPlayId", "atBatId", COALESCE("responsiblePitcherId", "pitcherId")
+ORDER BY 5 desc

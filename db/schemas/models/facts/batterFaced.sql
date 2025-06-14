@@ -3,9 +3,11 @@ create view baseball_models."batterFaced"
 (
     "gameId",
     "pitcherId",
+    "batterId",
     "atBatId",
     "gameDate",
     "atBatResult",
+    "atBatResultDescription",
     "isBatterOut",
     "isStrikeout",
     "isHit",
@@ -14,14 +16,12 @@ create view baseball_models."batterFaced"
     "isTriple",
     "isWalk",
     "isSacrifice",
-    "outsRecorded",
-    "runnersOn",
-    "runnersInScoringPosition",
     pitches,
     strikes,
     balls,
-    "runsAllowed",
-    "earnedRunsAllowed",
+    "outsRecorded",
+    "runs",
+    "earnedRuns",
     "numChangeUps",
     "numCutters",
     "numCurveballs",
@@ -56,39 +56,72 @@ create view baseball_models."batterFaced"
     "maxSweeperSpeed"
     )
 as
-select p."gameId"                       as "gameId",
-       p."pitcherId"                    as "pitcherId",
-       p."atBatId"                      as "atBatId",
-       p."gameDate"                     as "gameDate",
-       NULL                             as "atBatResult",
+    with lastPitchOfAtBat as (
+        select "gamePk",
+               "atBatId",
+               max("resultEvent")                  as "resultEvent",
+               max("resultEventDescription")       as "resultEventDescription",
+               max("batterPlayIndex")              as "lastPlayIndex"
+        from baseball_platinum.play
+        group by "atBatId", "gamePk"
+    ),
+    runnerMovement as (
+        select
+            g."gamePk",
+            g."gameDate",
+            p."fullName" as "pitcher",
+            coalesce("responsiblePitcherId", y."pitcherId") as "pitcherId",
+            y."atBatId",
+            y."batterPlayIndex",
+            sum(case when "isEarnedRun" then 1 else 0 end)
+                + sum(case when "isUnearnedRun" then 1 else 0 end) as "runs",
+            sum(case when "isEarnedRun" then 1 else 0 end) as "earnedRuns",
+            (sum(case when "isOut" then 1 else 0 end) / 3.0)::numeric as "inningsPitched"
+        from baseball_platinum.play y
+            inner join baseball_platinum.runner r on y."gamePk" = r."gamePk"
+                                                  and y."atBatId" = r."atBatId"
+                                                  and y."batterPlayIndex" = r."batterPlayId"
+                                                  and y."pitcherId" = coalesce("responsiblePitcherId", y."pitcherId")
+            inner join baseball_platinum.game g on y."gamePk" = g."gamePk"
+            inner join baseball_platinum.player p on p."playerId" = coalesce("responsiblePitcherId", y."pitcherId")
+            group by g."gamePk", g."gameDate", coalesce("responsiblePitcherId", y."pitcherId"), p."fullName", y."atBatId", y."batterPlayIndex"
+    )
+
+select p."gameId",
+       p."pitcherId",
+       p."batterId",
+       p."atBatId",
+       g."officialGameTime" as "gameDate",
+       max(ab."resultEvent") as "result",
+       max(ab."resultEventDescription") as "resultDescription",
        max(
             case
                 when p."isBatterOut" then 1
                 else 0
                 end
-       )                                                                                as "isBatterOut",
+       )    as "isBatterOut",
        max(
             case
-                when p."playCall" like 'strikeout%' then 1
+                when p."playCall" like '%strikeout%' then 1
                 else 0
                 end
-       )                                                                                as "isStrikeout",
+       )  "isStrikeout",
        max(
             case
-                when p."playCall" like '%single'
-                    or p."playCall" like '%double'
-                    or p."playCall" like '%triple'
-                    or p."playCall" like '%home_run' then 1
+                when   p."playCall" like '% single'
+                    or p."playCall" like '% double'
+                    or p."playCall" like '% triple'
+                    or p."playCall" like '% home_run' then 1
                 else 0
                 end
-       )                                                                                as "isHit",
+       ) as "isHit",
        max(
             CASE
                 WHEN p."playCall"::text like '%home_run' THEN 1
                 ELSE 0
                 END
        )                                                                                as "isHomerun",
-        max(
+       max(
             case
                 when p."playCall" like '%double'  then 1
                 else 0
@@ -113,10 +146,7 @@ select p."gameId"                       as "gameId",
                 else 0
                 end
        )                                                                                as "isSacrifice",
-       sum(p."outsRecorded")                                                            as "outsRecorded",
-       NULL                                                                             as "runnersOn",
-       NULL                                                                             as "runnersInScoringPosition",
-       count(*)                                                                         as pitches,
+       max("pitchIndex")                                                                as "numPitches",
        sum(
             case
                 when p."isStrike" then 1
@@ -124,12 +154,14 @@ select p."gameId"                       as "gameId",
                 end
        )                                                                                as strikes,
        sum(
-            case when p."isBall" then 1
-                 else 0
-                 end
+            case
+                when p."isBall" then 1
+                else 0
+                end
        )                                                                                as balls,
-       sum(p."runsSurrendered")                                                         as "runsAllowed",
-       0                                                                                as "earnedRunsAllowed",
+       sum(p."outsRecorded")                                                            as "outsRecorded",
+       sum(rM."runs")                                                                   as "runs",
+       sum(rM."earnedRuns")                                                             as "earnedRuns",
        sum("isChangeup")                                                                as "numChangeups",
        sum("isCurveball")                                                               as "numCurveballs",
        sum("isCutter")                                                                  as "numCutters",
@@ -142,7 +174,7 @@ select p."gameId"                       as "gameId",
             else sum( case when "isChangeup" = 1 then "pitchStartSpeed"::numeric end)
                      / sum(case when "isChangeup" = 1 then 1 end)
             end::numeric(4,1)                                                           as "avgChangeUpSpeed",
-      min(case when "isChangeup" = 1 then "pitchStartSpeed" end)                        as minChangeUpSpeed,
+      min(case when "isChangeup" = 1 then "pitchStartSpeed" end)                        as "minChangeUpSpeed",
       max(case when "isChangeup" = 1 then "pitchStartSpeed" end)                        as maxChangeUpSpeed,
       case when sum("isCurveball") = 0 then NULL
             else sum(case when "isCurveball" = 1 then "pitchStartSpeed"::numeric end)
@@ -186,14 +218,23 @@ select p."gameId"                       as "gameId",
             end::numeric(4,1)                                                           as "avgSweeperSpeed",
       min(case when "isSweeper" = 1 then "pitchStartSpeed" end)                         as "minSweeperSpeed",
       max(case when "isSweeper" = 1 then "pitchStartSpeed" end)                         as "maxSweeperSpeed"
-FROM baseball_models.pitch p
-GROUP BY  "gameId",
-    "pitcherId",
-    "atBatId",
-    "gameDate";
-
-
-select *
 from baseball_models.pitch p
-where p."playCall" like '%auto%'
+    inner join baseball_models.game g on p."gameId" = g."gameId"
+    left join runnerMovement rM on rm."gamePk" = g."gameId"
+                                 and rm."atBatId" = p."atBatId"
+                                 and rM."batterPlayIndex" = p."batterPlayIndex"
+                                 and rM."pitcherId" = p."pitcherId"
+    left join lastPitchOfAtBat ab on ab."gamePk" = p."gameId"
+                                  and ab."atBatId" = p."atBatId"
+                                  and ab."lastPlayIndex" = p."batterPlayIndex"
+group by p."gameId", g."officialGameTime", p."pitcherId",p."batterId", p."atBatId";
 
+select "gameId", "gameDate", "pitcherId",
+       sum(runs) as runs,
+       sum("earnedRuns") as "earnedRuns",
+       sum("isHit") as hits
+from baseball_models."batterFaced" bf
+inner join baseball_platinum.player p on bf."pitcherId" = p."playerId"
+where "fullName" = 'Paul Skenes'
+group by "pitcherId", "gameId", "gameDate"
+order by "gameDate";

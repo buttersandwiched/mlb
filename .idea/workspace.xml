@@ -4,30 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23d07e0c-9ce1-41b4-adc3-3d65ff089e3b" name="Changes" comment="remove unnecessary files">
+    <list default="true" id="23d07e0c-9ce1-41b4-adc3-3d65ff089e3b" name="Changes" comment="enhancements and added runners">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/audit/play.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/runner.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/appearance.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/batterFaced.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/batterSeasonStats.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/boxScore.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/plateAppearance.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/runner.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/runner.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/pitcherSeasonStats.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schemas/models/facts/pitcherStats.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/get_mlb_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/get_mlb_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/shared/api_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/shared/api_tools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/ddl/runner.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/aluminum/ddl/runner.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/transformations/hit.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/hit.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/transformations/plays.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/game.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/models/facts/game.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/transformations/CTEs.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/CTEs.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/transformations/player.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/player.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/aluminum/transformations/runner.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/aluminum/transformations/runner.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/appearance.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/models/facts/appearance.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/batterFaced.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/models/facts/batterFaced.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/pitch.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/models/facts/pitch.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/models/facts/play.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/game.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/game.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/play.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/play.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/ddl/runner.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/ddl/runner.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/player.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/player.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/teams.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/teams.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schemas/platinum/transformations/runner.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/schemas/platinum/transformations/runner.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +33,17 @@
         <option value="Python Script" />
         <option value="SQL File" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -84,6 +88,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -185,7 +190,12 @@
       <workItem from="1747666137054" duration="6435000" />
       <workItem from="1748011591931" duration="23164000" />
       <workItem from="1748109408461" duration="100399000" />
-      <workItem from="1748744000895" duration="66458000" />
+      <workItem from="1748744000895" duration="76640000" />
+      <workItem from="1749317445996" duration="15488000" />
+      <workItem from="1749352169551" duration="453000" />
+      <workItem from="1749352627898" duration="63000" />
+      <workItem from="1749352747279" duration="34941000" />
+      <workItem from="1749585438861" duration="34906000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -211,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748715193319</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="enhancements and added runners">
+      <option name="closed" value="true" />
+      <created>1749216132681</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1749216132681</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +250,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="refactor column names" />
     <MESSAGE value="remove unnecessary files" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove unnecessary files" />
+    <MESSAGE value="enhancements and added runners" />
+    <option name="LAST_COMMIT_MESSAGE" value="enhancements and added runners" />
   </component>
 </project>

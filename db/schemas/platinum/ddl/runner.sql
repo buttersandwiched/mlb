@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS baseball_platinum.runner;
 CREATE TABLE baseball_platinum.runner
 (
     "runPk"                 SERIAL PRIMARY KEY,

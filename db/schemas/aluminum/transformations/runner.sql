@@ -8,7 +8,9 @@ INSERT INTO baseball_aluminum.runner ("gamePk",
                                       "postOnThirdId",
                                       "atBatId",
                                       "batterPlayId",
+                                      "event",
                                       "eventType",
+                                      "movementReason",
                                       "originBase",
                                       "startBase",
                                       "endBase",
@@ -27,7 +29,9 @@ select p."gamePk",
        p."postOnThirdId",
        p."atBatId",
        p."batterPlayIndex",
+       runner.value->'details'->>'event'                    as "event",
        runner.value->'details'->>'eventType'                as "eventType",
+       runner.value->'details'->>'movementReason'           as "movementReason",
        runner.value->'movement'->>'originBase'              as "originBase",
        runner.value->'movement'->>'startBase'               as "startBase",
        runner.value->'movement'->>'endBase'                 as "endBase",
@@ -46,24 +50,5 @@ select p."gamePk",
        CURRENT_TIMESTAMP
 from baseball_aluminum.play p,
     LATERAL json_array_elements(p."runnerData") as runner
-where (runner.value->'details'->>'playIndex')::int = p."batterPlayIndex";
-
-
-select "gamePk",
-       "responsiblePitcherId",
-       sum(  case when "isEarnedRun" then 1 else 0 end
-           + case when "isUnearnedRun" then 1 else 0 end
-          )                                                 as "runsAllowed",
-       sum(case when "isEarnedRun" then 1 else 0 end)       as "earnedRuns",
-       sum(case when "isUnearnedRun" then 1 else 0 end)     as "unearnedRuns"
-from baseball_aluminum.runner
-where "responsiblePitcherId" is not null
-group by "gamePk", "responsiblePitcherId";
-
-select "gamePk", "runnerId", "pitcherId", runner."responsiblePitcherId", "atBatId", "batterPlayId",
-       count(*),
-       min("eventType"),
-       max("eventType")
-from baseball_aluminum.runner
-group by "gamePk", "runnerId", "pitcherId", "responsiblePitcherId", "atBatId", "batterPlayId"
-having count(*) > 1
+where (runner.value->'details'->>'playIndex')::int = p."batterPlayIndex"
+order by "gamePk", "atBatId", "batterPlayIndex";

@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS baseball_aluminum.runner;
 CREATE TABLE baseball_aluminum.runner
 (
+    "runnerPk"              SERIAL PRIMARY KEY,
     "gamePk"                INT,
     "runnerId"              INT,
     "pitcherId"             INT,
@@ -10,7 +11,9 @@ CREATE TABLE baseball_aluminum.runner
     "postOnThirdId"         INT,
     "atBatId"               INT,
     "batterPlayId"          INT,
+    "event"                 TEXT,
     "eventType"             TEXT,
+    "movementReason"        TEXT,
     "originBase"            TEXT,
     "startBase"             TEXT,
     "endBase"               TEXT,
@@ -23,4 +26,4 @@ CREATE TABLE baseball_aluminum.runner
     "isEarnedRun"           BOOLEAN,
     "isUnearnedRun"         BOOLEAN,
     "_createdAt"            TIMESTAMP
-    )
+    );

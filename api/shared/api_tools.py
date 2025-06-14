@@ -193,6 +193,7 @@ def get_mlb_players(season=datetime.now().year,
         print(f'number of games: {len(game_ids)}')
 
     players_data = []
+    player_links = []
     if game_ids:
         for game_id in game_ids:
             game_endpoint = f'/game/{game_id}/feed/live'
@@ -208,14 +209,19 @@ def get_mlb_players(season=datetime.now().year,
                         player_dict = {'link': player['person']['link'], 'teamId': 0}
                     else :
                         player_dict = {'link': player['person']['link'], 'teamId': player['parentTeamId']}
-                    resp = get_mlb_stats_api_response(player['person']['link'],
-                                                      is_full_endpoint=True,
-                                                      verbose=True)
-                    if resp.status_code == 200:
-                        player_dict.update(resp.json()['people'][0])
 
-                    if player_dict not in players_data:
+                    if player_dict['link'] not in player_links:
                         players_data.append(player_dict)
+                        player_links.append(player_dict['link'])
+        for link in player_links:
+            resp = get_mlb_stats_api_response(link,
+                                              is_full_endpoint=True,
+                                              verbose=True)
+            if resp.status_code == 200:
+                players_data.update(resp.json()['people'][0])
+
+            if player not in players_data:
+                players_data.append(player)
     print(f'number of players: {len(players_data)}')
 
     return players_data

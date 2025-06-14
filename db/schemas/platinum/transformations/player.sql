@@ -99,4 +99,3 @@ WHEN NOT MATCHED THEN INSERT
 SELECT *
 FROM baseball_platinum.player;
 
-SELECT "pitcherId", "gameId", "teamId", "pitchCount", "inningsPitched", "hits", "runs", "walks", "homeruns", "strikeouts" FROM "baseball_models"."pitcherAppearance" AS "pitcherAppearance" WHERE "pitcherAppearance"."pitcherId" = '690953';
