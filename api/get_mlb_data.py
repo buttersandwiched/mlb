@@ -18,8 +18,8 @@ print('done.')
 #cloud_tools.write_to_blob('mlb', 'teams/teams.json', json.dumps(teams, indent=4))
 print ('fetching mlb player data...')
 players = api_tools.get_mlb_players(verbose=False,
-                                    start_date=(datetime.now() - timedelta(days=76)).strftime('%Y-%m-%d'),
-                                    end_date=(datetime.now() - timedelta(days=70)).strftime('%Y-%m-%d')
+                                    start_date=(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d'),
+                                    end_date=(datetime.now() - timedelta(days=0)).strftime('%Y-%m-%d')
                                     )
 print ('done.')
 print('writing to db...')
@@ -32,8 +32,8 @@ print('done.')
 #cloud_tools.write_to_blob('mlb', 'players/players.json', json.dumps(players, indent=4))
 
 print(f'fetching MLB schedule for season 2025...')
-schedule = api_tools.get_mlb_schedule(start_date=(datetime.now().date() - timedelta(days=76)).strftime('%Y-%m-%d'),
-                                      end_date=(datetime.now() - timedelta(days=70)).strftime('%Y-%m-%d'))
+schedule = api_tools.get_mlb_schedule(start_date=(datetime.now().date() - timedelta(days=5)).strftime('%Y-%m-%d'),
+                                      end_date=(datetime.now() - timedelta(days=0)).strftime('%Y-%m-%d'))
 print(f'done.')
 if schedule:
     #cloud_tools.write_to_blob('mlb', 'schedule/schedule.json', json.dumps(schedule, indent=4))
@@ -47,8 +47,8 @@ else:
     print('no scheduled games to process...done.')
 
 print('fetching game data...')
-game_data = api_tools.get_mlb_game_data(start_date=(datetime.now() - timedelta(days=76)).strftime('%Y-%m-%d')
-                                       ,end_date=(datetime.now() - timedelta(days=70)).strftime('%Y-%m-%d')
+game_data = api_tools.get_mlb_game_data(start_date=(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d')
+                                       ,end_date=(datetime.now() - timedelta(days=0)).strftime('%Y-%m-%d')
                                        ,verbose=False)
 if game_data:
     db_tools.write_to_db(data=game_data,
@@ -59,8 +59,8 @@ if game_data:
 print('done.')
 
 print('fetching mlb at bats data...')
-at_bats = api_tools.get_mlb_at_bats(start_date=(datetime.now() - timedelta(days=76)).strftime('%Y-%m-%d')
-                                    ,end_date=(datetime.now() - timedelta(days=70)).strftime('%Y-%m-%d')
+at_bats = api_tools.get_mlb_at_bats(start_date=(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d')
+                                    ,end_date=(datetime.now() - timedelta(days=0)).strftime('%Y-%m-%d')
                                     ,verbose=False)
 
 if at_bats:

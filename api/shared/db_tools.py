@@ -1,3 +1,5 @@
+from os import getcwd
+
 from sqlalchemy import create_engine, text
 from typing import Literal
 import pandas as pd
@@ -30,6 +32,21 @@ def connect_db():
         return engine
     except Exception as e:
         print(e)
+
+
+#This function sets up a fresh db instance with requisite schemas, tables and views
+#to accommodate the mlb-fantasy app
+def init_mlb_api_db(host='localhost', port=5432, db='sports_analytics'):
+    try:
+        sql_engine = connect_db()
+        sql = open('api/shared/init.sql', 'r').read()
+        with sql_engine.connect() as connection:
+            connection.execute(sql)
+
+    except Exception as e:
+        print(e)
+
+    return None
 
 
 def truncate_table(table_name: str, db_schema: str):
