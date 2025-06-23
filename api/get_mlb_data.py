@@ -2,6 +2,7 @@ from shared import cloud_tools, api_tools, db_tools, data_dictionaries
 from datetime import timedelta, datetime
 
 start_time = datetime.now()
+print(f'Start time: {start_time}')
 print ('fetching mlb team data...')
 mlb_teams = api_tools.get_mlb_teams()
 if mlb_teams:
@@ -18,7 +19,7 @@ print('done.')
 #cloud_tools.write_to_blob('mlb', 'teams/teams.json', json.dumps(teams, indent=4))
 print ('fetching mlb player data...')
 players = api_tools.get_mlb_players(verbose=False,
-                                    start_date=(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d'),
+                                    start_date=(datetime.now() - timedelta(days=86)).strftime('%Y-%m-%d'),
                                     end_date=(datetime.now() - timedelta(days=0)).strftime('%Y-%m-%d')
                                     )
 print ('done.')
@@ -32,7 +33,7 @@ print('done.')
 #cloud_tools.write_to_blob('mlb', 'players/players.json', json.dumps(players, indent=4))
 
 print(f'fetching MLB schedule for season 2025...')
-schedule = api_tools.get_mlb_schedule(start_date=(datetime.now().date() - timedelta(days=5)).strftime('%Y-%m-%d'),
+schedule = api_tools.get_mlb_schedule(start_date=(datetime.now().date() - timedelta(days=86)).strftime('%Y-%m-%d'),
                                       end_date=(datetime.now() - timedelta(days=0)).strftime('%Y-%m-%d'))
 print(f'done.')
 if schedule:
@@ -47,7 +48,7 @@ else:
     print('no scheduled games to process...done.')
 
 print('fetching game data...')
-game_data = api_tools.get_mlb_game_data(start_date=(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d')
+game_data = api_tools.get_mlb_game_data(start_date=(datetime.now() - timedelta(days=86)).strftime('%Y-%m-%d')
                                        ,end_date=(datetime.now() - timedelta(days=0)).strftime('%Y-%m-%d')
                                        ,verbose=False)
 if game_data:
@@ -59,7 +60,7 @@ if game_data:
 print('done.')
 
 print('fetching mlb at bats data...')
-at_bats = api_tools.get_mlb_at_bats(start_date=(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d')
+at_bats = api_tools.get_mlb_at_bats(start_date=(datetime.now() - timedelta(days=86)).strftime('%Y-%m-%d')
                                     ,end_date=(datetime.now() - timedelta(days=0)).strftime('%Y-%m-%d')
                                     ,verbose=False)
 

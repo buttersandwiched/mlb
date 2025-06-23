@@ -1,8 +1,3 @@
-/*
-SELECT *
-FROM baseball_raw.team
-*/
-
 TRUNCATE TABLE baseball_aluminum.team;
 INSERT INTO baseball_aluminum.team ("teamId", "venueId", "springVenueId", "divisionId", "leagueId", "springLeagueId",
                                     "sportId", "franchiseName", "teamName", "shortName", abbreviation, "clubName",
@@ -35,6 +30,3 @@ SELECT
     "active"::bool as is_active,
     CURRENT_TIMESTAMP
 FROM baseball_raw.team;
-
-select *
-from baseball_aluminum.team

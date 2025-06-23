@@ -204,7 +204,7 @@ def get_mlb_players(start_date=(datetime.now().date() - timedelta(days=7)).strft
                                               verbose=False)
             if resp.status_code == 200:
                 person = resp.json()['people'][0]
-                person['teamId'] = player_data['eamId']
+                person['teamId'] = player_data['teamId']
                 persons.append(person)
 
 

@@ -1,13 +1,17 @@
 /* This view gives the results of every play involving the movement of a runner.
+
    Movement is defined as attempting to advance to another base.
    (Note: The batter is always considered a runner if it's the final play of the at-bat)
    each row indicates the advancement of each runner (including batter) on each base
-   metrics: earned runs, unearned runs, whether the runner is out or not
-   notes:
-        - responsiblePitcherId is populated to indicate who the un/earned run is assigned to
+
+   Metrics: earned runs, unearned runs, whether the runner is out or not
+   Future enhancements: pickoffs, caught stealing, stolen bases
+
+   Key Columns:
+        - responsiblePitcherId indicates who the un/earned run is assigned to
         - pitcherId indicates the pitcher on the mound at time of the play
  */
-DROP VIEW baseball_models.movement cascade ;
+DROP VIEW IF EXISTS baseball_models.movement cascade ;
 CREATE VIEW baseball_models.movement
 AS
 Select
@@ -22,9 +26,9 @@ Select
        p."postOnThirdId",
        r."runnerId",
        "gameDate",
-       t2."teamName" as "awayTeam",
-       t."teamName"  as "homeTeam",
-       y."fullName"  as "pitcherName",
+       t2."teamName"                as "awayTeam",
+       t."teamName"                 as "homeTeam",
+       y."fullName"                 as "pitcherName",
        p.inning,
        p."runnerSplits",
        p."batterSplits",
@@ -36,10 +40,11 @@ Select
        "originBase"                 as "runnerOriginBase",
        "startBase"                  as "runnerStartBase",
        "endBase"                    as "runnerEndBase",
-       "outBase"            as "runnerOutBase",
-        "isOut"             as "isRunnerOut",
+       "outBase"                    as "runnerOutBase",
+       "isOut"                      as "isRunnerOut",
        "isUnearnedRun",
-       "isEarnedRun"
+       "isEarnedRun",
+       r."isStolenBase"             as "isStolenBase"
 from baseball_aluminum.runner r
     inner join baseball_platinum.game g on r."gamePk" = g."gamePk"
     inner join baseball_platinum.play p on g."gamePk" = p."gamePk" and p."atBatId" = r."atBatId" and p."batterPlayIndex" = r."batterPlayId"
@@ -79,7 +84,7 @@ select "gameDate",
        m."atBatId",
        inning                                                                       as "inning",
        "pitcherName",
-       sum(case when m."runnerId" = m."batterId" then 1 else 0 end)                     as "battersFaced",
+       sum(case when m."runnerId" = m."batterId" then 1 else 0 end)                 as "battersFaced",
        sum(case when m."runnerId" = m."batterId"
                      and "resultEventDescription" not like '%sacrifice%'
                      and "eventType" not in ('walk', 'hit_by_pitch') then 1
@@ -144,11 +149,6 @@ SELECT "pitcherId",
              end                                                       as "opponentBA"
 FROM baseball_models."movementPlateAppearance" pa
 group by "pitcherId", "pitcherName", "gameDate", "gamePk";
-
-select *
-    from baseball_models."movementGame"
-where "pitcherName" like '%Skenes%'
-order by "gameDate", "pitcherId"
 
 DROP VIEW IF EXISTS baseball_models."movementSeason";
 CREATE VIEW baseball_models."movementSeason"

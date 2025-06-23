@@ -31,3 +31,5 @@ SELECT p."playerId"         AS "batterId",
 FROM baseball_models."playerBoxScore" pa
          JOIN baseball_models.player p ON pa."batterId" = p."playerId"
 GROUP BY p."playerId", p."fullName", p."teamId";
+
+;

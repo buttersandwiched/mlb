@@ -104,5 +104,5 @@ GROUP BY g."officialGameDate",
          p.inning
 ORDER BY g."officialGameDate", p."gamePk";
 
-     select distinct "resultEvent"
-     from baseball_platinum.play
+Select *
+from baseball_models."plateAppearance"

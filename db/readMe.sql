@@ -4,6 +4,7 @@
  1) every single "play" with play defined as:
     - an action performed by the pitcher, batter, umpire or team(s)
         - this includes: pitch, batter/pitcher timeout, step-off, pickoff, batter/pitcher violation, play call review,
+   - "non-P
 
  2) every pitch thrown with all possible data points associated with it, including
     - pitch type, ball speed (when thrown and at contact, if possible), spin rate, strike zone coordinates,

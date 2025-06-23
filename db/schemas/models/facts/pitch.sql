@@ -157,13 +157,3 @@ FROM baseball_platinum.play p
                                         and p."gamePk" = rob."gamePk"
                                             and p."atBatId" = rob."atBatId"
                                             and p."batterPlayIndex" = rob."batterPlayId";
-
-select *
-from baseball_models.pitch
-where "outsRecorded" > 1
-order by "gameId","atBatId","batterPlayIndex";
-
-select *
-from baseball_platinum.runner
-where "gamePk" = 777628
-and "atBatId" = 0;

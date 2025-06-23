@@ -1,8 +1,12 @@
+/* Table:   Game
+   Purpose: Overview of a game, including game time, teams playing, venue, weather and attendance
+   Metrics: gameDuration, attendance
+*/
 TRUNCATE TABLE baseball_aluminum.game;
 
 INSERT INTO baseball_aluminum.game ("gamePk", "gameDate", "originalGameDate", "officialGameDate", time, "awayTeamId",
                                     "homeTeamId", "venueId", "weatherCondition", "weatherTemp", "weatherWind",
-                                    "gameAttendance", "firstPitch", "gameDurationMinutes", "_createdAt", "_createdBy")
+                                    "gameAttendance", "firstPitch", "gameDurationMinutes", "_createdAt")
 SELECT
     game."gamePk",
     (game.schedule->>'dateTime')::timestamptz,
@@ -18,10 +22,5 @@ SELECT
     (game."gameInfo"->>'attendance')::INT,
     (game."gameInfo"->>'firstPitch')::timestamptz,
     (game."gameInfo"->>'gameDurationMinutes')::INT,
-    CURRENT_TIMESTAMP,
-    'manual'
+    CURRENT_TIMESTAMP
 FROM baseball_raw."game" as game;
-
-SELECT *
-FROM baseball_aluminum.game
-order by 2,1

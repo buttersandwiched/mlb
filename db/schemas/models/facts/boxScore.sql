@@ -36,6 +36,3 @@ CREATE VIEW baseball_models."playerBoxScore"
     FROM baseball_models."plateAppearance"
     GROUP BY "gameDate", "gameId", "awayTeamId", "homeTeamId", "batterId"
     ORDER BY "gameDate" DESC, "batterId";
-
-SELECT "gameDate", "awayTeamId", "homeTeamId", "gameId", "batterId", "rbis", "strikeouts", "walks", "hits", "atBats", "homeruns" FROM "baseball_models"."playerBoxScore" AS "PlayerBoxScore" WHERE "PlayerBoxScore"."batterId" = '596146';
-

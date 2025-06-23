@@ -553,4 +553,4 @@ CREATE TABLE baseball_platinum.schedule
 -- Schema:          baseball_models
 -- Description:     feeds mlb-fantasy app
 -- -------------------------------------------------------------------------------------------------------
-select * from baseball_raw.play
+select * from baseball_raw.player

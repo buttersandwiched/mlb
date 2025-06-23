@@ -118,7 +118,7 @@ INSERT INTO baseball_aluminum.play
      "pitcherHotColdZones", "pitchData", "batterSplits", "batterHotColdZones", "HitData", "runnerData",
      "playStartTime", "playEndTime","atBatStartTime", "atBatEndTime", "isTopInning", "isPitch", "isStrike", "isBall",
      "isAtBatComplete", "isInPlay", "isScoringPlay", "isBatterOut","hasOutRecorded", "atBatHasReview", "hasReview",
-     "countBalls", "countStrikes", "countOuts", "awayScore","homeScore", "RBIs", "_createdAt", "_createdBy")
+     "countBalls", "countStrikes", "countOuts", "awayScore","homeScore", "RBIs", "_createdAt")
 SELECT
     p."gamePk",
     p."playId",
@@ -171,10 +171,6 @@ SELECT
     p."awayScore",
     p."homeScore",
     p."RBIs",
-    CURRENT_TIMESTAMP,
-    'manual'
+    CURRENT_TIMESTAMP
 from plays p
 ;
-
-SELECT *
-FROM baseball_aluminum.play
